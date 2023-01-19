@@ -2,7 +2,7 @@
 
 Team:
 
-* Person 1 - Which microservice?
+* Ching Cheng - Hats
 * Cierra Reese - Shoes
 
 ## Design
