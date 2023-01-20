@@ -49,8 +49,7 @@ def list_hats(request, location_vo_id=None):
             {"hats": hats},
             encoder=HatListEncoder,
         )
-
-    else:
+    elif request.method == "POST":
         content = json.loads(request.body)
 
         try:
@@ -71,14 +70,34 @@ def list_hats(request, location_vo_id=None):
         )
 
 
-# @require_http_methods(["DELETE", "GET", "PUT"])
-# def show_hat(request, id):
-#     if request.method == "GET":
-#         hat = Hat.objects.get(id=id)
-#         return JsonResponse(
-#             hat,
-#             encoder=HatDetailEncoder,
-#             safe=False,
-#         )
-#     elif request.method == "DELETE":
-#         count, _ = Hat.objects.filter
+@require_http_methods(["DELETE", "GET"])
+def show_hat(request, id):
+    if request.method == "GET":
+        hat = Hat.objects.get(id=id)
+        return JsonResponse(
+            hat,
+            encoder=HatDetailEncoder,
+            safe=False,
+        )
+    elif request.method == "DELETE":
+        count, _ = Hat.objects.filter(id=id).delete()
+        return JsonResponse({"delete": count > 0})
+    # elif request.method == "PUT":
+    #     content = json.loads(request.body)
+    #     try:
+    #         if "location" in content:
+    #             location = LocationVO.objects.get(id=content["location"])
+    #             content["location"] = location
+    #     except LocationVO.DoesNotExist:
+    #         return JsonResponse(
+    #             {"message": "Invalid location"},
+    #             status=400,
+    #         )
+    # Hat.objects.filter(id=id).update(**content)
+
+    # hat = Hat.objects.get(id=id)
+    # return JsonResponse(
+    #     hat,
+    #     encoder=HatDetailEncoder,
+    #     safe=False,
+    # )
