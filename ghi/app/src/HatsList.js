@@ -1,11 +1,17 @@
-async function deleteHat(hat) {
-    const hatUrl = `http://localhost:8090/api/hats/${hat.id}/`
-    const fetchConfig = {method: "delete"};
-    await fetch(hatUrl, fetchConfig);
-    window.location.reload(true);
-}
-
 function HatsList(props) {
+    const deleteHat = async (hat) => {
+        const hatUrl = `http://localhost:8090/api/hats/${hat.id}/`
+        const fetchConfig = {method: "delete"}
+        const response = await fetch(hatUrl, fetchConfig)
+        if (response.ok) {
+            props.getHats()
+        }
+    }
+
+    if (props.hats === undefined) {
+        return null
+    }
+
     return (
         <table className="table table-striped">
             <thead>
