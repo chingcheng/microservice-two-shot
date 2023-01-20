@@ -1,11 +1,6 @@
 async function deleteHat(hat) {
     const hatUrl = `http://localhost:8090/api/hats/${hat.id}/`
-    const fetchConfig = {
-        method: "delete",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
+    const fetchConfig = {method: "delete"};
     await fetch(hatUrl, fetchConfig);
     window.location.reload(true);
 }

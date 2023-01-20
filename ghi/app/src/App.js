@@ -8,6 +8,7 @@ function App(props) {
   if (props.hats === undefined) {
     return null;
   }
+
   return (
     <BrowserRouter>
       <Nav />
