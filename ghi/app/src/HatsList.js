@@ -1,3 +1,15 @@
+async function deleteHat(hat) {
+    const hatUrl = `http://localhost:8090/api/hats/${hat.id}/`
+    const fetchConfig = {
+        method: "delete",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+    await fetch(hatUrl, fetchConfig);
+    window.location.reload(true);
+}
+
 function HatsList(props) {
     return (
         <table className="table table-striped">
@@ -8,6 +20,7 @@ function HatsList(props) {
                 <th>Color</th>
                 <th>Picture</th>
                 <th>Location</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -27,6 +40,11 @@ function HatsList(props) {
                         />
                     </td>
                     <td>{ hat.location }</td>
+                    <td>
+                        <button type="button" className="btn btn-danger" onClick={() => deleteHat(hat)}>
+                        Delete
+                        </button>
+                    </td>
                 </tr>
                 );
             })}
