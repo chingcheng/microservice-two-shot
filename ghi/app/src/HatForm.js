@@ -1,6 +1,6 @@
 import React, { useEffect , useState } from 'react';
 
-function HatForm() {
+function HatForm(props) {
     const [fabric, setFabric] = useState('')
     const [styleName, setStyleName] = useState('')
     const [color, setColor] = useState('')
@@ -63,6 +63,7 @@ function HatForm() {
             setColor('')
             setPicture('')
             setLocation('')
+            props.getHats()
         }
     }
 
