@@ -20,7 +20,6 @@ class BinVOEncoder(ModelEncoder):
 class ShoeDetailEncoder(ModelEncoder):
     model = Shoe
     properties = [
-        # "name",
         "manufacturer",
         "model_name",
         "color",
@@ -35,7 +34,6 @@ class ShoeDetailEncoder(ModelEncoder):
 class ShoeListEncoder(ModelEncoder):
     model = Shoe
     properties = [
-        # "name",
         "manufacturer",
         "model_name",
         "color",
@@ -75,7 +73,7 @@ def api_list_shoes(request):
             safe=False,
         )
 
-@require_http_methods(["GET", "PUT"])
+@require_http_methods(["GET", "PUT", "DELETE"])
 def api_show_shoes(request, pk):
     if request.method == "GET":
         try:
@@ -90,6 +88,11 @@ def api_show_shoes(request, pk):
                 {"message": "Bin does not exist"},
                 status=400,
             )
+    elif request.method == "DELETE":
+        count, _ = Shoe.objects.filter(id=pk).delete()
+        return JsonResponse(
+            {"deleted": count>0}
+        )
     else:
         content = json.loads(request.body)
         Shoe.objects.filter(pk=id).update(**content)
