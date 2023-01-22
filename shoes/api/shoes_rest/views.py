@@ -77,7 +77,7 @@ def api_list_shoes(request):
 def api_show_shoes(request, pk):
     if request.method == "GET":
         try:
-            shoe = Shoe.objects.get(pk=id)
+            shoe = Shoe.objects.get(id=pk)
             return JsonResponse(
                 {"shoe": shoe},
                 encoder=ShoeDetailEncoder,
@@ -95,8 +95,8 @@ def api_show_shoes(request, pk):
         )
     else:
         content = json.loads(request.body)
-        Shoe.objects.filter(pk=id).update(**content)
-        shoe = Shoe.objects.get(pk=id)
+        Shoe.objects.filter(id=pk).update(**content)
+        shoe = Shoe.objects.get(id=pk)
         return JsonResponse(
             shoe,
             encoder=ShoeDetailEncoder,
