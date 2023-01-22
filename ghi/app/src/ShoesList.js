@@ -33,7 +33,7 @@ function ShoesList(props) {
                     <td>{ shoe.color }</td>
                     <td>
                         <img
-                            src={shoe.picture}
+                            src={shoe.picture_url}
                             alt=""
                             width="75px"
                             height="75px"
@@ -42,7 +42,7 @@ function ShoesList(props) {
                     <td>{ shoe.closet_name }</td>
                     <td>{ shoe.bin_number }</td>
                     <td>
-                        <button type="button" className="btn btn-danger" onClick={() => deleteShoe(shoe.id)}>Delete</button>
+                        <button type="button" className="btn btn-danger" onClick={() => deleteShoe(shoe)}>Delete</button>
                     </td>
                 </tr>
                 );

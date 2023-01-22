@@ -6,7 +6,6 @@ function ShoeForm(props){
     const [model_name, setModelName] = useState('')
     const [color, setColor] = useState('')
     const [picture, setPicture] = useState('')
-    const [closet_name, setClosetName] = useState('')
     const [bin, setBin] = useState('')
 
     const handleNameChange = (event) => {
@@ -14,36 +13,31 @@ function ShoeForm(props){
         setModelName(value)
     }
     const handleManufacturer = (event) => {
-        const value = event.target.value;
-        setManufacturer(value);
+        const value = event.target.value
+        setManufacturer(value)
     }
     const handleColor = (event) => {
-        const value = event.target.value;
-        setColor(value);
+        const value = event.target.value
+        setColor(value)
     }
     const handlePicture = (event) => {
-        const value = event.target.value;
-        setPicture(value);
-    }
-    const handleClosetName = event => {
         const value = event.target.value
-        setClosetName(value)
+        setPicture(value)
     }
     const handleBin = (event) => {
-        const value = event.target.value;
-        setBin(value);
+        const value = event.target.value
+        setBin(value)
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
 
         const data = {}
-        data.model_name = model_name
         data.manufacturer = manufacturer
+        data.model_name = model_name
         data.color = color
-        data.picture = picture
+        data.picture_url = picture
         data.bin = bin
-        data.closet_name = closet_name
 
         const shoesURL='http://localhost:8080/api/shoes/'
         const fetchConfig = {
@@ -62,7 +56,6 @@ function ShoeForm(props){
             setManufacturer('')
             setColor('')
             setPicture('')
-            setClosetName('')
             setBin('')
             props.getShoes()
         }
@@ -102,17 +95,13 @@ function ShoeForm(props){
                     <input onChange={handlePicture} value={picture} placeholder="Picture" required type="url" name="picture" id="picture" className="form-control"/>
                     <label htmlFor="picture">Picture URL</label>
                     </div>
-                    <div className="form-floating mb-3">
-                    <input onChange={handleClosetName} value={closet_name} placeholder="Closet Name" required type="text" name="closet_name" id="closet_name" className="form-control"/>
-                    <label htmlFor="closet_name">Closet Name</label>
-                    </div>
                     <div className="mb-3">
                     <select onChange={handleBin} value={bin} required id="bin" name="bin" className="form-select">
                         <option value="">Choose a bin</option>
                         {bins.map(bin => {
                         return (
                         <option key={bin.id} value={bin.href}>
-                            {bin.bin_number}
+                            {bin.closet_name}
                         </option>
                         );
                     })}

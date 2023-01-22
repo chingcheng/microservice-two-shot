@@ -44,7 +44,7 @@ function App(props) {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="shoes">
-            <Route index element={<ShoesList shoes={shoes} getShoes={getShoes} />} />
+            <Route path="" element={<ShoesList shoes={shoes} getShoes={getShoes} />} />
             <Route path="new" element={<ShoeForm getShoes={getShoes} />} />
           </Route>
           <Route path="hats">
