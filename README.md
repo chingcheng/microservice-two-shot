@@ -9,8 +9,7 @@ Team:
 
 ## Shoes microservice
 
-Explain your models and integration with the wardrobe
-microservice, here.
+The Shoe microservice allows for the creation, retrieval, and deletion of shoe models. These models contain information such as the shoe's name, manufacturer, model, picture, and color. The shoe model also includes a foreign key that refers to a bin. The bin info is pulled from the Wardrobe microservice. This allows for the organization and storage of shoes within bins within the wardrobe
 
 ## Hats microservice
 
