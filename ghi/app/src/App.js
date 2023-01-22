@@ -32,6 +32,8 @@ function App(props) {
     }
   }
 
+
+
   useEffect(() => {
     getHats();
     getShoes();
