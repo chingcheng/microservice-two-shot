@@ -39,8 +39,8 @@ function ShoesList(props) {
                             height="75px"
                         />
                     </td>
-                    <td>{ shoe.closet_name }</td>
-                    <td>{ shoe.bin_number }</td>
+                    <td>{ shoe.bin.closet_name }</td>
+                    <td>{ shoe.bin.bin_number }</td>
                     <td>
                         <button type="button" className="btn btn-danger" onClick={() => deleteShoe(shoe)}>Delete</button>
                     </td>

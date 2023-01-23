@@ -24,6 +24,7 @@ function App(props) {
   const getShoes = async () => {
     const shoesURL = 'http://localhost:8080/api/shoes'
     const shoesResponse = await fetch(shoesURL)
+    console.log(shoesResponse)
 
     if (shoesResponse.ok) {
       const shoesData = await shoesResponse.json()

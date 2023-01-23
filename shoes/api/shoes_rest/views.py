@@ -38,6 +38,7 @@ class ShoeListEncoder(ModelEncoder):
         "model_name",
         "color",
         "picture_url",
+        "id",
         "bin",
     ]
     encoders = {
